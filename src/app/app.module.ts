@@ -8,7 +8,7 @@ import { CreateDiaryRecordComponent } from './modules/diaries/components/create-
 
 const ROUTES: Routes = [
   { path: '', component: AppComponent },
-  { path: 'record-day', component: CreateDiaryRecordComponent}
+  { path: 'diary',  loadChildren: () => import('./modules/diaries/diaries.module').then(m=>m.DiariesModule)}
 ];
 
 @NgModule({
@@ -18,7 +18,6 @@ const ROUTES: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES),
-    DiariesModule
   ],
   providers: [],
   exports:[RouterModule],
