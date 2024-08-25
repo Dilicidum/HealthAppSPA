@@ -5,14 +5,21 @@ import { CreateDiaryRecordComponent } from './components/create-diary-record/cre
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateDiaryRecordService } from './services/create-diary-record.service';
+import { DiariesListComponent } from './components/diaries-list/diaries-list.component';
+import { UpdateDiaryRecordComponent } from './components/update-diary-record/update-diary-record.component';
 
 const ROUTES: Routes = [
-  { path: '',  component: CreateDiaryRecordComponent}
+  { path: '', redirectTo: 'list', pathMatch: 'full' },
+  { path: 'create-record', component: CreateDiaryRecordComponent },
+  { path: 'list', component: DiariesListComponent },
+  { path: 'update-record', component: UpdateDiaryRecordComponent}
 ];
 
 @NgModule({
   declarations: [
     CreateDiaryRecordComponent,
+    DiariesListComponent,
+    UpdateDiaryRecordComponent
   ],
   imports: [
     CommonModule,

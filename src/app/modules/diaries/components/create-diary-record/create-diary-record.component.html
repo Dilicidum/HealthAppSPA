@@ -1,20 +1,27 @@
-<div class="h-100">
-  <form class="h-100 d-flex justify-content-center align-items-center flex-column" (ngSubmit)="onSubmit()" [formGroup]="form">
+<div class="h-100 mt-2">
+  <form class="h-100 d-flex align-items-center flex-column" (ngSubmit)="onSubmit()" [formGroup]="form">
     <h3>Record what happened today</h3>
     <div class="form-group pb-2">
       <label class="pb-2">Provide a breef description what happened today</label>
       <textarea formControlName="shortDescription" class="form-control textarea-regular"></textarea>
+      <div *ngIf="shortDescription.invalid && (shortDescription.dirty || shortDescription.touched)">
+        <span class="error k-tooltip-validation">Please enter description.</span>
+      </div>
     </div>
+
     <div class="form-group pb-2">
       <label class="pb-2">Provide more detailed description about your day</label>
       <textarea formControlName="description" class="form-control textarea-big"></textarea>
     </div>
     <div class="form-group pb-2 d-flex" style="width: 350px;">
       <label class="form-check-label">Choose a date</label>
-      <input class="form-control" type="date">
+      <input class="form-control" formControlName="date" type="date">
+      <div *ngIf="date.invalid && (date.dirty || date.touched)">
+        <span class="error k-tooltip-validation">Please enter the date.</span>
+      </div>
     </div>
     <div class="form-check form-switch pb-2">
-      <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+      <input class="form-check-input" (change)="pickTodaysDate()" type="checkbox" id="flexSwitchCheckChecked" checked>
       <label class="form-check-label" for="flexSwitchCheckChecked">Record as today</label>
     </div>
     <button class="btn btn-primary mt-2 btn-lg" type="submit">Record a day!</button>

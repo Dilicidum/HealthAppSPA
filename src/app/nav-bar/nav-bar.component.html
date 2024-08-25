@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">MyApp</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active" *ngFor="let item of menuItems">
+        <a class="nav-link" (click)="ChooseMenuTab(item.name)" routerLink={{item.path}}>{{item.name}}</a>
+        <ul class="navbar-nav" *ngIf="item.isChoosen">
+          <li class="nav-item active" *ngFor="let childrenItems of item.children">
+            <a class="nav-link" routerLink={{childrenItems.path}}>{{childrenItems.name}}</a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+</nav>
