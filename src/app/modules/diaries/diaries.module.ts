@@ -4,9 +4,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CreateDiaryRecordComponent } from './components/create-diary-record/create-diary-record.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateDiaryRecordService } from './services/create-diary-record.service';
+import { DiaryRecordService } from './services/diary-record.service';
 import { DiariesListComponent } from './components/diaries-list/diaries-list.component';
 import { UpdateDiaryRecordComponent } from './components/update-diary-record/update-diary-record.component';
+import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
 
 const ROUTES: Routes = [
   { path: '', redirectTo: 'list', pathMatch: 'full' },
@@ -18,17 +19,17 @@ const ROUTES: Routes = [
 @NgModule({
   declarations: [
     CreateDiaryRecordComponent,
-    DiariesListComponent,
     UpdateDiaryRecordComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     RouterModule.forChild(ROUTES),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgGridModule
   ],
   providers: [
-    CreateDiaryRecordService
+    DiaryRecordService
   ]
 })
 export class DiariesModule { }

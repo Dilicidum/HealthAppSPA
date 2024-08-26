@@ -1,3 +1,4 @@
 export const URLs = {
-  recordDay: "api/diaries"
+  recordDay: "api/diaries",
+  diaryResource: "api/diaries"
 }

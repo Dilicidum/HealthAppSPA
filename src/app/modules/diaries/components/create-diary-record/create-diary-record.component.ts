@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { CreateDiaryRecordService } from '../../services/create-diary-record.service';
+import { DiaryRecordService } from '../../services/diary-record.service';
 import { DayRecord } from '../../models/dayRecord';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
@@ -13,7 +13,7 @@ export class CreateDiaryRecordComponent implements OnInit, OnDestroy {
 
   form: FormGroup
 
-  constructor(private createDiaryRecordService: CreateDiaryRecordService) { }
+  constructor(private createDiaryRecordService: DiaryRecordService) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({

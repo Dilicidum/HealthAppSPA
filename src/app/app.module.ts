@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
-
+import { CommonModule } from '@angular/common';
 const ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'diary',  loadChildren: () => import('./modules/diaries/diaries.module').then(m=>m.DiariesModule)}
@@ -19,6 +19,7 @@ const ROUTES: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES),
+    CommonModule
   ],
   providers: [],
   exports:[RouterModule],
