@@ -15,7 +15,7 @@
     </div>
     <div class="form-group pb-2 d-flex" style="width: 350px;">
       <label class="form-check-label">Choose a date</label>
-      <input class="form-control" formControlName="date" type="date">
+      <input class="form-control" formControlName="date" type="date" value="{{ date.value| date:'yyyy-MM-dd' }}">
       <div *ngIf="date.invalid && (date.dirty || date.touched)">
         <span class="error k-tooltip-validation">Please enter the date.</span>
       </div>

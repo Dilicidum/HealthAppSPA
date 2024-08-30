@@ -18,4 +18,8 @@ export class DiaryRecordService{
   getDiaryRecords(): Observable<DayRecord[]> {
     return this.http.get<DayRecord[]>(URLs.recordDay);
   }
+
+  getDiaryRecordById(id: number): Observable<DayRecord> {
+    return this.http.get<DayRecord>(URLs.getDiaryRecordById(id));
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DiaryRecordService } from '../../services/diary-record.service';
 import { DayRecord } from '../../models/dayRecord';
@@ -9,19 +9,13 @@ import { BehaviorSubject, Subscription } from 'rxjs';
   templateUrl: './create-diary-record.component.html',
   styleUrls: ['./create-diary-record.component.scss']
 })
-export class CreateDiaryRecordComponent implements OnInit, OnDestroy {
+export class CreateDiaryRecordComponent implements OnInit,AfterViewInit, OnDestroy {
 
   form: FormGroup
 
   constructor(private createDiaryRecordService: DiaryRecordService) { }
 
-  ngOnInit(): void {
-    this.form = new FormGroup({
-      shortDescription: new FormControl('', [Validators.required]),
-      description: new FormControl(''),
-      date: new FormControl(new Date(), [Validators.required])
-    })
-    this.pickTodaysDateisEnabled$.next(true);
+  ngAfterViewInit(): void {
     this.pickTodaysDateisEnabled$.subscribe(isEnabled => {
       if (isEnabled) {
         this.date.setValue(new Date());
@@ -31,6 +25,17 @@ export class CreateDiaryRecordComponent implements OnInit, OnDestroy {
         this.date.reset();
       }
     })
+  }
+
+
+
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      shortDescription: new FormControl('', [Validators.required]),
+      description: new FormControl(''),
+      date: new FormControl(null, [Validators.required])
+    })
+    this.pickTodaysDateisEnabled$.next(true);
   }
 
   subscription: Subscription;
@@ -57,7 +62,6 @@ export class CreateDiaryRecordComponent implements OnInit, OnDestroy {
   pickTodaysDateisEnabled$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   pickTodaysDate() {
-    console.log('here')
     this.pickTodaysDateisEnabled$.next(!this.pickTodaysDateisEnabled$.value)
 
   }

@@ -13,7 +13,7 @@ const ROUTES: Routes = [
   { path: '', redirectTo: 'list', pathMatch: 'full' },
   { path: 'create-record', component: CreateDiaryRecordComponent },
   { path: 'list', component: DiariesListComponent },
-  { path: 'update-record', component: UpdateDiaryRecordComponent}
+  { path: 'update-record/:id', component: UpdateDiaryRecordComponent}
 ];
 
 @NgModule({

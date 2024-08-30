@@ -13,7 +13,7 @@ export class NavBarComponent implements OnInit {
     {
       name: "Diary", path: "/diary", children: [
         { name: "Make a note about today", path: "/diary/create-record" },
-        { name: "Edit your previous diary notes", path: "/diary/update-record" },
+        { name: "Edit your previous diary notes", path: "/diary/update-record/2" },
         { name: "Journal list", path: "/diary/list" }
     ]}
   ] as NavigationMenuItem[]
